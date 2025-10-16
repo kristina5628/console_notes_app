@@ -1,0 +1,95 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "login": "kristik",
+            "password": "qwerty123!"
+        },
+        {
+            "id": 2,
+            "login": "werty",
+            "password": "qwerty123!"
+        },
+        {
+            "id": 3,
+            "login": "qazwsx",
+            "password": "qwas123!"
+        },
+        {
+            "id": 4,
+            "login": "dany",
+            "password": "asdfg123!"
+        },
+        {
+            "id": 5,
+            "login": "fify",
+            "password": "qazwsxdc123!"
+        },
+        {
+            "id": 6,
+            "login": "serry",
+            "password": "qwertyas123!"
+        },
+        {
+            "id": 7,
+            "login": "remy",
+            "password": "qazwsx123!"
+        }
+    ],
+    "notes": [
+        {
+            "id": 1,
+            "date_create": "2025-09-22",
+            "update_date": "2025-10-07",
+            "title": "Заметка №1",
+            "text_note": "Тут должен быть какой-то текст",
+            "tags": {
+                "tag1": "пир",
+                "tag2": "дом",
+                "tag3": "лёд"
+            },
+            "user_id": 1
+        },
+        {
+            "id": 2,
+            "date_create": "2025-09-25",
+            "update_date": "2025-10-08",
+            "title": "ewifjew",
+            "text_note": "Какой-то текст",
+            "tags": {
+                "tag1": "приключения",
+                "tag2": "книги",
+                "tag3": "отдых",
+                "tag4": "выходные"
+            },
+            "user_id": 1
+        },
+        {
+            "id": 3,
+            "date_create": "2025-10-07",
+            "update_date": "none",
+            "title": "заметка3",
+            "text_note": "Что-то тут явно должно быть написано",
+            "tags": {
+                "tag1": "книги",
+                "tag2": "фильмы",
+                "tag3": "сериалы",
+                "tag4": "аниме"
+            },
+            "user_id": 1
+        },
+        {
+            "id": 4,
+            "date_create": "2025-10-09",
+            "update_date": "none",
+            "title": "Заметка №1",
+            "text_note": "Как прошёл мой день...",
+            "tags": {
+                "tag1": "рутина",
+                "tag2": "дом",
+                "tag3": "отдых"
+            },
+            "user_id": 5
+        }
+    ]
+}
