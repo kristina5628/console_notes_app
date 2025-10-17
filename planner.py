@@ -70,7 +70,21 @@ def print_date(today_date):
         print(f"____________{today_date} (сегодня)____________")
     else:
         print(f"____________{today_date}____________")
-
+        
+def show_tasks(today_date):
+    with open("notes.json", "r") as f:
+        tasks = json.load(f)
+    taskss = tasks["planner"]
+    count = 0
+    for i in taskss:
+        if today_date == i["date"]:
+            print(f'Дата: {i["time_date"]}\nЗадача: {i["task"]}\nПодзадачи: {i["add_to_task"]}\nСделано: {i["is_done"]}\nДедлайн: {i["deadline"]}')
+            count+=1
+        else:
+            continue
+    else:
+        if count == 1:
+            print("У вас пока нет задач на день! (Доби своден:))")
 def planner():
     print("Приложение 'Ежедневник' открыто (чтобы выйти нажмите 'q')")
     today_date = date.today()
@@ -83,11 +97,13 @@ def planner():
             os.system('clear')
             print("Приложение 'Ежедневник' открыто (чтобы выйти нажмите 'q')")
             print_date(today_date)
+            show_tasks(today_date)
         elif key == '\x1b[C':
             today_date = today_date + timedelta(days=1)
             os.system('clear')
             print("Приложение 'Ежедневник' открыто (чтобы выйти нажмите 'q')")
             print_date(today_date)
+            show_tasks(today_date)
         elif key == 'q':
             break
     
