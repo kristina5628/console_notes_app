@@ -14,8 +14,33 @@ class Planner:
         self.deadline = deadline
         
     def add_task(self):
-        pass
-def creat_addedTask():
+        if not os.path.exists("notes.json") or os.path.getsize("notes.json") == 0:
+            try:
+                tasks = {"planner": []}
+                with open("notes.json", "w", encoding='utf-8') as f:
+                    json.dump(tasks, f, ensure_ascii=False, indent=4)
+            except FileNotFoundError:
+                print("Произошла ошибка, попробуйте снова!")
+        else:
+            with open("notes.json", "r") as f:
+                tasks = json.load(f)
+                
+            task = tasks["planner"]
+            if task:
+                id_last_note = task[-1]["id"] + 1
+            else:
+                id_last_note = 1
+            self.id = id_last_note
+            
+            newTask = {"id": self.id, "date": self.date, "time_date": self.time_date, "task": self.task, "add_to_task": self.add_to_task, "is_done": self.is_done, "deadline": self.deadline}
+            task.append(newTask)
+            
+            with open("notes.json", "w", encoding="utf-8") as f:
+                json.dump(tasks, f, ensure_ascii=False, indent=4)
+                
+            print("Задание на день добавлено!")
+            
+def create_addedTask():
     pass           
  
 def create_task():
@@ -26,11 +51,11 @@ def create_task():
     deadline = None
     key = sys_setting.get_key()
     if key == 'd':
-        add_to_task = creat_addedTask()
+        add_to_task = create_addedTask()
     if key == 'f':
         deadline = input("Введите дату дедлайна (в формате: гггг-мм-дд): ")
     
-    task1 = Planner(id=None, 
+    task1 = Planner(id=None,
                     date = date.today(), 
                     time_date = datetime.now(),
                     task = text_task,

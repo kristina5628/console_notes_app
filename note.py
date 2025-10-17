@@ -16,7 +16,6 @@ class Notes:
         
         if not os.path.exists("notes.json") or os.path.getsize("notes.json") == 0:
             try:
-                
                 notes = {"notes": []}
                 with open("notes.json", "w", encoding="utf-8") as f:
                     json.dump(notes, f, ensure_ascii=False, indent=4)
@@ -29,9 +28,9 @@ class Notes:
             note = notes["notes"]
             if note:
                 id_last_note = note[-1]["id"] + 1
-                self.id = id_last_note
             else:
-                self.id = 1
+                id_last_note = 1
+            self.id = id_last_note
             
             newNote = {"id": self.id, "date_create": self.date_create, "update_date": self.update_date, "title": self.title, "text_note": self.text_note, "tags": self.tags, "user_id": self.us_id}
             note.append(newNote)
