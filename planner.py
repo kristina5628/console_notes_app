@@ -85,6 +85,8 @@ def show_tasks(today_date):
     else:
         if count == 1:
             print("У вас пока нет задач на день! (Доби своден:))")
+            
+            
 def planner():
     print("Приложение 'Ежедневник' открыто (чтобы выйти нажмите 'q')")
     today_date = date.today()
