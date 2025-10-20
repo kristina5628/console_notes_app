@@ -70,28 +70,49 @@ def print_date(today_date):
         print(f"____________{today_date} (сегодня)____________")
     else:
         print(f"____________{today_date}____________")
+
+def init_notes_file():
+    if not os.path.exists("notes.json"):
+        task_structure = {
+            "planner": []
+        }
+        with open("notes.json", "w", encoding='utf-9') as f:
+            json.dump(task_structure, f, ensure_ascii=False, indent=4)
         
+    
 def show_tasks(today_date):
+    init_notes_file()
     with open("notes.json", "r") as f:
         tasks = json.load(f)
     taskss = tasks["planner"]
+    today_str = today_date.strftime("%Y-%m-%d")
     count = 0
     for i in taskss:
-        if today_date == i["date"]:
-            print(f'Дата: {i["time_date"]}\nЗадача: {i["task"]}\nПодзадачи: {i["add_to_task"]}\nСделано: {i["is_done"]}\nДедлайн: {i["deadline"]}')
+        if today_str == i.get["date",""]:
+            print(f'Дата: {i.get["time_date"]}\nЗадача: {i.get["task"]}\nПодзадачи: {i.get["add_to_task"]}\nСделано: {i.get["is_done"]}\nДедлайн: {i.get["deadline"]}')
             count+=1
-        else:
-            continue
-    else:
-        if count == 1:
-            print("У вас пока нет задач на день! (Доби своден:))")
-            
+
+    if count == 1:
+        print("У вас пока нет задач на день! (Доби своден:))")
+
+def task_operation():
+    print("1)Добавить задачу на день\n2)Изменить задачу\n3)Удалить задачу")
+    try:
+        a = int(input("Выберете, что хотите сделать с задачами: "))
+        match a:
+            case 1:
+                create_task()
+            case 2:
+                pass
+            case 3: 
+                pass
+    except ValueError:
+        print("Введите пожалуйста число от 1 до 3!")                
             
 def planner():
     print("Приложение 'Ежедневник' открыто (чтобы выйти нажмите 'q')")
     today_date = date.today()
     print_date(today_date)
-    
     while True:
         key = sys_setting.get_key()
         if key == '\x1b[D':
@@ -100,12 +121,14 @@ def planner():
             print("Приложение 'Ежедневник' открыто (чтобы выйти нажмите 'q')")
             print_date(today_date)
             show_tasks(today_date)
+            task_operation()
         elif key == '\x1b[C':
             today_date = today_date + timedelta(days=1)
             os.system('clear')
             print("Приложение 'Ежедневник' открыто (чтобы выйти нажмите 'q')")
             print_date(today_date)
             show_tasks(today_date)
+            task_operation()
         elif key == 'q':
             break
     

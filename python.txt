@@ -1,0 +1,36 @@
+help(obj) — встроенная справка, dir(obj) — атрибуты/методы.
+type(x) — тип значения; id(x) — идентификатор объекта.
+Докстроки: print(obj.__doc__)
+
+pydoc и документация в терминалеpydoc и документация в терминале:
+Запуск: python -m pydoc <модуль/имя>
+Локальный веб-сервер: python -m pydoc -p 0
+Докстроки и примеры — основной источник помощи.
+
+Пример:
+python -m pydoc json
+python -m pydoc json.loads
+# Веб-сервер со справкой (выдаст URL)
+python -m pydoc -p 0
+
+Обновить pip: python -m pip install --upgrade pip
+
+
+Виртуальные окружения (venv):
+Создание: python -m venv .ven
+Активация: Windows .\.venv\Scripts\activate; 
+macOS/Linux source .venv/bin/activate
+
+Фиксация зависимостей: pip freeze > requirements.txt; деактивация:
+deactivate.
+
+Запуск кода: REPL, скрипты, модули 
+REPL: просто введите python.
+Скрипт: python script.py; Модуль: python -m http.server 8000
+Однострочник: python -c "print(2+2)"; Shebang для Unix.
+
+Jupyter Notebook: первые шаги
+Установка: pip install jupyter; запуск: jupyter notebook/lab.
+Ячейки: Code и Markdown; быстрые клавиши: A/B, Shift+Enter.:
+Полезные команды: %timeit, %%bash; экспорт в HTML/PDF.
+

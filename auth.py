@@ -58,15 +58,19 @@ def auth():
         return registrate()
 
 def CheckLogin(login):
-    with open("notes.json", "r") as f:
-        user = json.load(f)
-    us = user["users"]
-    
-    for i in us:
-        if login == i["login"]:
-            print("Пользователь с таким логином уже существует!")
-            input()
-            registrate()
+    try:
+        with open("notes.json", "r") as f:
+            user = json.load(f)
+        us = user["users"]
+        
+        for i in us:
+            if login == i["login"]:
+                print("Пользователь с таким логином уже существует!")
+                input()
+                registrate()
+                
+    except FileNotFoundError:
+        print("Произошла ошибка, попробуйте снова!")
     
 def registrate():
     os.system('clear')
