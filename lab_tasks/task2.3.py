@@ -1,11 +1,11 @@
 def is_prime(number):
-    
+    is_primery = True
+
     for i in range(2, number):
         if number % i == 0:
-            print("Число не является простым")
+            is_primery = False
             break
-    else:
-        print("Число простое")
-            
+    print(is_primery)
+                
 a = int(input("Введите число: "))
 is_prime(a)
